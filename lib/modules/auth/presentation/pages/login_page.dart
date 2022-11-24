@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fodery_admin/modules/core/routes/app_routes.dart';
-import 'package:vrouter/vrouter.dart';
+import 'package:fodery_admin/modules/auth/presentation/widgets/button_widget.dart';
+import 'package:fodery_admin/modules/auth/presentation/widgets/chip_text_button.dart';
+import 'package:fodery_admin/modules/auth/presentation/widgets/text_field_widget.dart';
+import 'package:fodery_admin/modules/core/validators/auth_validators.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -51,6 +53,10 @@ class _LoginPageState extends State<LoginPage> {
                         const SizedBox(
                           height: 8,
                         ),
+                        const TextFieldWidget(
+                          labelText: "Email",
+                          validator: AuthValidators.validateEmail,
+                        ),
                         const SizedBox(
                           height: 12,
                         ),
@@ -59,14 +65,25 @@ class _LoginPageState extends State<LoginPage> {
                         const SizedBox(
                           height: 8,
                         ),
+                        const TextFieldWidget(
+                            labelText: "Password",
+                            validator: AuthValidators.validatePassword),
                         const SizedBox(
                           height: 18,
                         ),
+                        AuthButton(
+                          text: "Sign In",
+                          onTap: () {},
+                        )
                       ],
                     ),
                   ),
                 ),
               ),
+              ChipTextButton(
+                  prefixText: "Don't have an account? ",
+                  suffixText: "Register",
+                  onTap: () {})
             ],
           ),
         ],
