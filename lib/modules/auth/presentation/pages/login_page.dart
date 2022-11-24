@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:fodery_admin/modules/auth/presentation/widgets/button_widget.dart';
 import 'package:fodery_admin/modules/auth/presentation/widgets/chip_text_button.dart';
 import 'package:fodery_admin/modules/auth/presentation/widgets/text_field_widget.dart';
+import 'package:fodery_admin/modules/core/routes/app_routes.dart';
 import 'package:fodery_admin/modules/core/validators/auth_validators.dart';
+import 'package:vrouter/vrouter.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -73,7 +75,12 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         AuthButton(
                           text: "Sign In",
-                          onTap: () {},
+                          onTap: () {
+                            context.vRouter.toSegments(
+                                [RESTAURANT_SEGMENT, ADD_NEW_SEGMENT],
+                                isReplacement: true);
+                            print(_loginFormKey.currentState!.validate());
+                          },
                         )
                       ],
                     ),
